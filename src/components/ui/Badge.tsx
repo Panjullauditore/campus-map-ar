@@ -2,12 +2,12 @@ import { cn } from "@/lib/utils";
 import type { LocationCategory } from "@/types/campus";
 
 const categoryStyles: Record<LocationCategory, string> = {
-  academic: "bg-sky-500/15 text-sky-300 ring-sky-500/30",
-  dining: "bg-amber-500/15 text-amber-300 ring-amber-500/30",
-  residence: "bg-violet-500/15 text-violet-300 ring-violet-500/30",
-  recreation: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/30",
-  services: "bg-rose-500/15 text-rose-300 ring-rose-500/30",
-  parking: "bg-slate-500/15 text-slate-300 ring-slate-500/30",
+  informatika: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/30",
+  matematika: "bg-blue-500/15 text-blue-300 ring-blue-500/30",
+  fisika: "bg-violet-500/15 text-violet-300 ring-violet-500/30",
+  kimia: "bg-yellow-500/15 text-yellow-300 ring-yellow-500/30",
+  biologi: "bg-orange-500/15 text-orange-300 ring-orange-500/30",
+  umum: "bg-slate-500/15 text-slate-300 ring-slate-500/30",
 };
 
 interface BadgeProps {
