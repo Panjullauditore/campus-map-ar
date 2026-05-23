@@ -48,7 +48,7 @@ export function LocationPanel({ location }: LocationPanelProps) {
         </p>
       )}
       <div className="mt-5 flex flex-wrap gap-2">
-        <Button href="/ar" variant="outline" className="text-xs">
+        <Button href={`/ar?id=${location.id}`} variant="outline" className="text-xs">
           <Scan className="h-4 w-4" aria-hidden />
           AR preview
         </Button>
