@@ -53,7 +53,7 @@ export function Header() {
           className="hidden items-center gap-2 rounded-xl bg-emerald-500/15 px-4 py-2 text-sm font-semibold text-emerald-300 ring-1 ring-emerald-500/30 transition hover:bg-emerald-500/25 sm:inline-flex"
         >
           <Scan className="h-4 w-4" aria-hidden />
-          AR Soon
+          AR View
         </Link>
 
         <button
