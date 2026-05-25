@@ -121,7 +121,7 @@ function HitTestManager({ locationId }: { locationId: string }) {
 
   // 1) Desktop / Non-AR Preview
   if (!isPresenting) {
-    const centerPos = new THREE.Vector3(0, -1, 0);
+    const centerPos = new THREE.Vector3(0, 0, 0);
     return (
       <>
         {locationId === "gedung-e" && <GedungEModel position={centerPos} />}
@@ -205,8 +205,10 @@ function DOMOverlayManager() {
 export function ARScene({ locationId }: { locationId: string }) {
   const [overlayReady, setOverlayReady] = useState(false);
   const [isSimulatedAR, setIsSimulatedAR] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
   useEffect(() => {
+    setIsMobile(/Mobi|Android/i.test(navigator.userAgent));
     setOverlayReady(true);
   }, []);
 
@@ -232,9 +234,9 @@ export function ARScene({ locationId }: { locationId: string }) {
       {overlayReady && !isSimulatedAR && (
         <button
           onClick={() => setIsSimulatedAR(true)}
-          className="absolute bottom-16 left-1/2 -translate-x-1/2 z-[100] rounded-full bg-emerald-600 px-6 py-3 font-bold text-white shadow-xl transition active:scale-95"
+          className="absolute bottom-16 left-1/2 -translate-x-1/2 z-[100] rounded-full bg-emerald-600 px-6 py-3 font-bold text-white shadow-xl transition active:scale-95 whitespace-nowrap"
         >
-          BUKA KAMERA LAPTOP
+          {isMobile ? "BUKA KAMERA HP" : "BUKA KAMERA LAPTOP"}
         </button>
       )}
       
@@ -253,9 +255,11 @@ export function ARScene({ locationId }: { locationId: string }) {
           <DOMOverlayManager />
           <ambientLight intensity={1.2} />
           <directionalLight position={[5, 10, 5]} intensity={2} castShadow />
-          <Environment preset="city" />
           
-          <HitTestManager locationId={locationId} />
+          <Suspense fallback={null}>
+            <Environment preset="city" />
+            <HitTestManager locationId={locationId} />
+          </Suspense>
           
           <OrbitControls />
         </XR>
